@@ -14,14 +14,11 @@ const intervalId = setInterval(() => {
 function bindShortcuts() {
     console.log('bind shortcuts')
     if (isTelegramPageReady()) {
-        clearInterval(intervalId)
+        clearInteqrval(intervalId)
     }
 
     window.removeEventListener('keyup', handleKeyUp)
     window.addEventListener('keyup', handleKeyUp)
-
-    window.removeEventListener('click', handleReply)
-    window.addEventListener('click', handleReply)
 }
 
 async function handleReply(e) {
@@ -32,7 +29,7 @@ async function handleReply(e) {
 }
 
 function isTelegramPageReady() {
-    const inputSearch = document.querySelector('.header-status-content')
+    const inputSearch = document.querySelector('.copyable-text.selectable-text')
     if (inputSearch) return true
     else return false
 }
@@ -43,7 +40,7 @@ function handleKeyUp(e) {
         if (isKeyCode(e.keyCode, 'd')) {
             e.preventDefault()
             console.log('press shift + d')
-            document.querySelector('.media-viewer-footer div:nth-child(3)').click()
+            document.querySelector('div[title=Download]').click()
         }
     }
 }
